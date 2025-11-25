@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Voice - فريق الإدارة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --team-color: #0066ff;
+            --vip-color: #ffd700;
+            --customer-color: #00ff88;
+            --gold-color: #ffd700;
+            --silver-color: #c0c0c0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c0c, #1a1a2e, #16213e);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* شعار Top Voice في الهيدر */
+        .logo-header {
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 15px;
+        }
+
+        .top-voice-logo {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--gold-color), var(--silver-color), #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: logoGlow 3s infinite alternate;
+            margin-bottom: 5px;
+        }
+
+        @keyframes logoGlow {
+            0% {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6);
+            }
+            100% {
+                text-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 215, 0, 0.4);
+            }
+        }
+
+        .logo-subtitle {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 10px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(45deg, var(--team-color), #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(0, 102, 255, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(0, 102, 255, 0.8), 0 0 40px rgba(0, 102, 255, 0.6);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        /* التخطيط الجديد - بطاقات مستطيلة تحت بعض */
+        .members-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        /* تصميم البطاقات المستطيلة */
+        .member-card-rect {
+            width: 100%;
+            border-radius: 15px;
+            padding: 3px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            min-height: 120px;
+        }
+
+        .member-card-rect:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .member-glowing-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            filter: blur(8px);
+        }
+
+        .member-card-rect:hover .member-glowing-border {
+            opacity: 1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .member-content-rect {
+            border-radius: 13px;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+            gap: 15px;
+        }
+
+        /* المحتوى على اليسار */
+        .member-info {
+            flex: 1;
+            text-align: right;
+        }
+
+        .member-id {
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            backdrop-filter: blur(5px);
+            display: inline-block;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .phone-number {
+            font-size: 1rem;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            direction: ltr;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-block;
+        }
+
+        .member-card-rect:hover .phone-number {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        /* الزر على اليمين */
+        .whatsapp-btn-rect {
+            display: inline-block;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .whatsapp-btn-rect:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-btn-rect:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .whatsapp-btn-rect:hover:after {
+            left: 100%;
+        }
+
+        /* ألوان خدمة العملاء */
+        .customer-card-rect {
+            background: linear-gradient(135deg, #002200, #006600);
+        }
+
+        .customer-card-rect .member-content-rect {
+            background: linear-gradient(135deg, #002200, #006600);
+        }
+
+        .customer-card-rect .member-glowing-border {
+            background: conic-gradient(from 0deg, var(--customer-color), #00cc66, #00ff88, var(--customer-color));
+        }
+
+        .customer-card-rect .member-id {
+            background: rgba(0, 255, 136, 0.3);
+            border: 1px solid rgba(0, 255, 136, 0.6);
+        }
+
+        .customer-card-rect:hover .phone-number {
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.7);
+        }
+
+        .customer-card-rect .whatsapp-btn-rect {
+            background: linear-gradient(135deg, var(--customer-color), #00cc66);
+        }
+
+        /* ألوان فريق الإدارة */
+        .management-card-rect {
+            background: linear-gradient(135deg, #001122, #003366);
+        }
+
+        .management-card-rect .member-content-rect {
+            background: linear-gradient(135deg, #001122, #003366);
+        }
+
+        .management-card-rect .member-glowing-border {
+            background: conic-gradient(from 0deg, var(--team-color), #00ccff, #0066ff, var(--team-color));
+        }
+
+        .management-card-rect .member-id {
+            background: rgba(0, 102, 255, 0.3);
+            border: 1px solid rgba(0, 102, 255, 0.6);
+        }
+
+        .management-card-rect:hover .phone-number {
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.7);
+        }
+
+        /* ألوان الـ VIP */
+        .vip-card-rect {
+            background: linear-gradient(135deg, #1a001a, #4b0082);
+        }
+
+        .vip-card-rect .member-content-rect {
+            background: linear-gradient(135deg, #1a001a, #4b0082);
+        }
+
+        .vip-card-rect .member-glowing-border {
+            background: conic-gradient(from 0deg, var(--vip-color), #ff6b6b, #ffd700, var(--vip-color));
+        }
+
+        .vip-card-rect .member-id {
+            background: rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.6);
+        }
+
+        .vip-card-rect:hover .phone-number {
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(0, 102, 255, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer أنيق */
+        .elegant-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px 20px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(26, 26, 46, 0.8));
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--gold-color), var(--silver-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .footer-text {
+            color: #cccccc;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .copyright {
+            color: #888888;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .footer-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            animation: footerGlow 4s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes footerGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(180deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+                padding: 0 10px;
+            }
+            
+            .top-voice-logo {
+                font-size: 2.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .member-content-rect {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .member-info {
+                text-align: center;
+            }
+            
+            .whatsapp-btn-rect {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-voice-logo {
+                font-size: 2rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .member-content-rect {
+                padding: 15px;
+            }
+            
+            .member-name {
+                font-size: 1.1rem;
+            }
+            
+            .phone-number {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+            
+            .whatsapp-btn-rect {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <!-- شعار Top Voice في الأعلى -->
+        <div class="logo-header">
+            <div class="top-voice-logo">TOP VOICE</div>
+            <div class="logo-subtitle">القيادة .. التميز .. الابتكار</div>
+        </div>
+
+        <header>
+            <h1><i class="fas fa-users"></i> فريق الإدارة</h1>
+            <p class="subtitle">تواصل معنا مباشرة عبر واتساب</p>
+        </header>
+        
+        <!-- القائمة الجديدة - بطاقات مستطيلة تحت بعض -->
+        <div class="members-list">
+            <!-- خدمة العملاء أولاً -->
+            <div class="member-card-rect customer-card-rect">
+                <div class="member-glowing-border"></div>
+                <div class="member-content-rect">
+                    <div class="member-info">
+                        <div class="member-id">ID: CUSTOMER-CARE</div>
+                        <h3 class="member-name">خدمة العملاء</h3>
+                        <div class="phone-number">+56 9 6135 0756</div>
+                    </div>
+                    <a href="https://wa.me/56961350756?text=مرحبا%20اريد%20التواصل%20معك%20بشأن%20التطبيق" class="whatsapp-btn-rect" target="_blank">
+                        <i class="fab fa-whatsapp"></i> اضغط للتواصل
+                    </a>
+                </div>
+            </div>
+
+            <!-- فريق الإدارة -->
+            <div class="member-card-rect management-card-rect">
+                <div class="member-glowing-border"></div>
+                <div class="member-content-rect">
+                    <div class="member-info">
+                        <div class="member-id">ID: 200200</div>
+                        <h3 class="member-name">فريق الإدارة</h3>
+                        <div class="phone-number">+201111772388</div>
+                    </div>
+                    <a href="https://wa.me/201111772388?text=مرحبا%20اريد%20التواصل%20معك%20بشأن%20التطبيق" class="whatsapp-btn-rect" target="_blank">
+                        <i class="fab fa-whatsapp"></i> اضغط للتواصل
+                    </a>
+                </div>
+            </div>
+            
+            <div class="member-card-rect management-card-rect">
+                <div class="member-glowing-border"></div>
+                <div class="member-content-rect">
+                    <div class="member-info">
+                        <div class="member-id">ID: 200909</div>
+                        <h3 class="member-name">فريق الإدارة</h3>
+                        <div class="phone-number">01029703036</div>
+                    </div>
+                    <a href="https://wa.me/201029703036?text=مرحبا%20اريد%20التواصل%20معك%20بشأن%20التطبيق" class="whatsapp-btn-rect" target="_blank">
+                        <i class="fab fa-whatsapp"></i> اضغط للتواصل
+                    </a>
+                </div>
+            </div>
+            
+            <div class="member-card-rect management-card-rect">
+                <div class="member-glowing-border"></div>
+                <div class="member-content-rect">
+                    <div class="member-info">
+                        <div class="member-id">ID: 200444</div>
+                        <h3 class="member-name">فريق الإدارة</h3>
+                        <div class="phone-number">+201116140586</div>
+                    </div>
+                    <a href="https://wa.me/201116140586?text=مرحبا%20اريد%20التواصل%20معك%20بشأن%20التطبيق" class="whatsapp-btn-rect" target="_blank">
+                        <i class="fab fa-whatsapp"></i> اضغط للتواصل
+                    </a>
+                </div>
+            </div>
+            
+            <div class="member-card-rect management-card-rect">
+                <div class="member-glowing-border"></div>
+                <div class="member-content-rect">
+                    <div class="member-info">
+                        <div class="member-id">ID: 200111</div>
+                        <h3 class="member-name">فريق الإدارة</h3>
+                        <div class="phone-number">01032980206</div>
+                    </div>
+                    <a href="https://wa.me/201032980206?text=مرحبا%20اريد%20التواصل%20معك%20بشأن%20التطبيق" class="whatsapp-btn-rect" target="_blank">
+                        <i class="fab fa-whatsapp"></i> اضغط للتواصل
+                    </a>
+                </div>
+            </div>
+            
+            <div class="member-card-rect management-card-rect">
+                <div class="member-glowing-border"></div>
+                <div class="member-content-rect">
+                    <div class="member-info">
+                        <div class="member-id">ID: 200222</div>
+                        <h3 class="member-name">فريق الإدارة</h3>
+                        <div class="phone-number">01212055596</div>
+                    </div>
+                    <a href="https://wa.me/201212055596?text=مرحبا%20اريد%20التواصل%20معك%20بشأن%20التطبيق" class="whatsapp-btn-rect" target="_blank">
+                        <i class="fab fa-whatsapp"></i> اضغط للتواصل
+                    </a>
+                </div>
+            </div>
+            
+            <!-- الداعمين والـ VIP -->
+            <div class="member-card-rect vip-card-rect">
+                <div class="member-glowing-border"></div>
+                <div class="member-content-rect">
+                    <div class="member-info">
+                        <div class="member-id">ID: 100010</div>
+                        <h3 class="member-name">الداعمين والـ VIP</h3>
+                        <div class="phone-number">01556864346</div>
+                    </div>
+                    <a href="https://wa.me/201556864346?text=مرحبا%20اريد%20التواصل%20معك%20بشأن%20التطبيق" class="whatsapp-btn-rect" target="_blank">
+                        <i class="fab fa-whatsapp"></i> اضغط للتواصل
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الفوتر الجديد -->
+        <footer class="elegant-footer">
+            <div class="footer-glow"></div>
+            <div class="footer-logo">TOP VOICE</div>
+            <div class="footer-text">فريق الإدارة العربي</div>
+            <div class="copyright">جميع الحقوق محفوظة &copy; 2023 - Top Voice</div>
+        </footer>
+    </div>
+
+    <script>
+        // إنشاء الجسيمات العائمة
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#0066ff', '#00ccff', '#ffd700', '#00ff88', '#ff6b6b', '#4ecdc4'];
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 8 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = color;
+                
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                
+                particle.style.animationDuration = `${Math.random() * 25 + 15}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // تهيئة الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+        });
+    </script>
+</body>
+</html>
