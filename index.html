@@ -6,16 +6,6 @@
     <title>Top Voice - فريق الإدارة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #8a2be2;
-            --secondary: #00d4ff;
-            --accent: #ff4081;
-            --success: #25D366;
-            --dark: #0f0f1a;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -24,883 +14,434 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+            background: #0a0a0f;
             color: white;
             min-height: 100vh;
-            padding: 20px;
-            perspective: 1000px;
-            overflow-x: hidden;
-        }
-
-        /* تأثيرات 3D خفيفة في الخلفية */
-        .floating-3d {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        .cube {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            transform-style: preserve-3d;
-            animation: floatCube 20s infinite linear;
-        }
-
-        .cube:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .cube:nth-child(2) {
-            top: 60%;
-            left: 80%;
-            animation-delay: -5s;
-            animation-duration: 25s;
-        }
-
-        .cube:nth-child(3) {
-            top: 80%;
-            left: 20%;
-            animation-delay: -10s;
-            animation-duration: 30s;
-        }
-
-        .side {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0.3;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .front  { transform: rotateY(0deg) translateZ(30px); background: var(--primary); }
-        .back   { transform: rotateY(180deg) translateZ(30px); background: var(--secondary); }
-        .right  { transform: rotateY(90deg) translateZ(30px); background: var(--accent); }
-        .left   { transform: rotateY(-90deg) translateZ(30px); background: var(--success); }
-        .top    { transform: rotateX(90deg) translateZ(30px); background: white; }
-        .bottom { transform: rotateX(-90deg) translateZ(30px); background: #666; }
-
-        @keyframes floatCube {
-            0% { transform: rotateX(0) rotateY(0) rotateZ(0) translateZ(0); }
-            25% { transform: rotateX(180deg) rotateY(90deg) rotateZ(45deg) translateZ(100px); }
-            50% { transform: rotateX(0) rotateY(180deg) rotateZ(90deg) translateZ(0); }
-            75% { transform: rotateX(180deg) rotateY(270deg) rotateZ(135deg) translateZ(-100px); }
-            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg) translateZ(0); }
+            padding: 0;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            width: 100%;
+            max-width: 100%;
+            padding: 15px;
         }
 
-        /* الهيدر مع تأثير 3D */
-        .site-header {
+        /* الهيدر البسيط */
+        .header {
             text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 40px;
-            position: relative;
-            transform-style: preserve-3d;
+            padding: 20px 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 20px;
         }
 
-        .logo-3d {
-            font-size: 4rem;
-            font-weight: 900;
-            color: transparent;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-            transform-style: preserve-3d;
-            animation: logoFloat 6s ease-in-out infinite;
-        }
-
-        .logo-3d span {
-            position: relative;
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            transform: translateZ(20px);
-            text-shadow: 
-                0 5px 15px rgba(138, 43, 226, 0.3),
-                0 0 30px rgba(0, 212, 255, 0.2);
-        }
-
-        .logo-3d::before {
-            content: 'TOP VOICE';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            background: linear-gradient(45deg, var(--accent), var(--success));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            opacity: 0.5;
-            transform: translateZ(-10px);
-            filter: blur(5px);
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0) rotateX(5deg); }
-            50% { transform: translateY(-10px) rotateX(-5deg); }
-        }
-
-        .logo-subtitle {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-            transform: translateZ(15px);
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 5px;
         }
 
         .title {
-            font-size: 2.5rem;
-            color: white;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* قائمة البطاقات */
+        .members-list {
+            width: 100%;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
             gap: 15px;
-            transform: translateZ(10px);
+            margin-bottom: 30px;
         }
 
-        .title i {
-            color: var(--accent);
-            animation: pulse 2s infinite;
-            transform-style: preserve-3d;
+        /* بطاقة واحدة */
+        .member-card {
+            background: #1a1a2e;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid #2d2d44;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1) translateZ(0); }
-            50% { transform: scale(1.1) translateZ(10px); }
-        }
-
-        .description {
-            color: #aaa;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-            transform: translateZ(5px);
-        }
-
-        /* الشبكة الرئيسية */
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        /* بطاقة الفريق مع تأثير 3D */
-        .team-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            transform-style: preserve-3d;
-            transform: perspective(1000px) rotateY(0deg);
-            cursor: pointer;
-        }
-
-        .team-card:hover {
-            transform: perspective(1000px) rotateY(5deg) translateY(-10px) scale(1.02);
-            box-shadow: 
-                0 25px 50px rgba(138, 43, 226, 0.3),
-                0 0 60px rgba(0, 212, 255, 0.2),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-            border-color: transparent;
-        }
-
+        /* أعلى البطاقة */
         .card-header {
-            padding: 25px;
-            position: relative;
-            transform-style: preserve-3d;
-            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
-        .card-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(138, 43, 226, 0.8) 0%, 
-                rgba(0, 212, 255, 0.8) 100%);
-            transform: translateZ(-1px);
-            z-index: -1;
+        .member-id {
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 6px 15px;
+            border-radius: 20px;
         }
 
-        .team-type {
-            font-size: 1.8rem;
+        .member-type {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        /* اسم الفريق */
+        .team-name {
+            font-size: 1.3rem;
             font-weight: 700;
             color: white;
-            display: flex;
-            align-items: center;
-            gap: 15px;
             margin-bottom: 10px;
-            transform: translateZ(20px);
+            text-align: center;
         }
 
-        .team-type i {
-            font-size: 2rem;
-            transform-style: preserve-3d;
-            animation: iconFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateZ(0) rotateY(0); }
-            50% { transform: translateZ(10px) rotateY(180deg); }
-        }
-
-        .team-id {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform: translateZ(15px);
-            backdrop-filter: blur(10px);
-        }
-
-        /* محتوى البطاقة */
-        .card-content {
-            padding: 30px;
-            transform-style: preserve-3d;
-        }
-
-        /* قسم الرقم مع تأثير 3D */
+        /* الرقم */
         .phone-section {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-            transform: translateZ(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .phone-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                transparent 30%, 
-                rgba(255, 255, 255, 0.03) 50%, 
-                transparent 70%);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .phone-section:hover::before {
-            transform: translateX(100%);
-        }
-
-        .phone-section:hover {
-            transform: translateZ(20px) translateX(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         .phone-label {
-            color: var(--secondary);
-            font-size: 1rem;
-            margin-bottom: 15px;
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transform: translateZ(5px);
-        }
-
-        .phone-label i {
-            color: var(--accent);
-            transform-style: preserve-3d;
-            animation: phoneRing 2s infinite;
-        }
-
-        @keyframes phoneRing {
-            0%, 100% { transform: rotate(0); }
-            10%, 30%, 50%, 70%, 90% { transform: rotate(-10deg); }
-            20%, 40%, 60%, 80% { transform: rotate(10deg); }
+            gap: 5px;
         }
 
         .phone-number {
-            font-size: 1.8rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: white;
             direction: ltr;
             text-align: center;
-            letter-spacing: 2px;
-            font-family: 'Courier New', monospace;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform: translateZ(15px);
-            position: relative;
-            overflow: hidden;
+            font-family: monospace;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
         }
 
-        .phone-number::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, 
-                transparent 30%, 
-                rgba(255, 255, 255, 0.1) 50%, 
-                transparent 70%);
-            transform: rotate(45deg) translateY(-100%);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: rotate(45deg) translateY(-100%); }
-            100% { transform: rotate(45deg) translateY(100%); }
-        }
-
-        /* زر الواتساب الضخم مع 3D */
+        /* زر واتساب كبير وواضح */
         .whatsapp-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
+            background: #25D366;
             color: white;
             text-decoration: none;
-            padding: 25px;
-            border-radius: 15px;
+            padding: 16px;
+            border-radius: 12px;
             font-weight: 700;
-            font-size: 1.3rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            transition: all 0.2s;
             border: none;
             cursor: pointer;
             width: 100%;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            transform: perspective(500px) rotateX(0deg);
-            animation: btnFloat 4s ease-in-out infinite;
-        }
-
-        @keyframes btnFloat {
-            0%, 100% { transform: perspective(500px) rotateX(0deg) translateY(0); }
-            50% { transform: perspective(500px) rotateX(5deg) translateY(-5px); }
-        }
-
-        .whatsapp-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--success) 0%, #128C7E 100%);
-            transform: translateZ(-5px);
-            z-index: -1;
-            border-radius: 15px;
-        }
-
-        .whatsapp-btn::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, 
-                var(--success), 
-                #128C7E, 
-                var(--success), 
-                #128C7E);
-            border-radius: 17px;
-            z-index: -2;
-            filter: blur(10px);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .whatsapp-btn:hover {
-            transform: perspective(500px) rotateX(10deg) scale(1.05);
-            letter-spacing: 1px;
-        }
-
-        .whatsapp-btn:hover::after {
-            opacity: 0.6;
+            background: #128C7E;
+            transform: scale(1.02);
         }
 
         .whatsapp-btn i {
-            font-size: 1.8rem;
-            transition: transform 0.3s ease;
-            transform-style: preserve-3d;
+            font-size: 1.2rem;
         }
 
-        .whatsapp-btn:hover i {
-            transform: scale(1.2) rotateY(180deg);
+        /* الألوان */
+        .customer .member-id {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.3);
         }
 
-        /* الألوان الخاصة بكل فريق */
-        .customer .card-header::before {
-            background: linear-gradient(135deg, rgba(0, 176, 155, 0.8) 0%, rgba(150, 201, 61, 0.8) 100%);
+        .management .member-id {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.3);
         }
 
-        .management .card-header::before {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+        .vip .member-id {
+            background: rgba(255, 64, 129, 0.2);
+            color: #ff4081;
+            border: 1px solid rgba(255, 64, 129, 0.3);
         }
 
-        .vip .card-header::before {
-            background: linear-gradient(135deg, rgba(240, 147, 251, 0.8) 0%, rgba(245, 87, 108, 0.8) 100%);
-        }
-
-        /* فوتر */
+        /* الفوتر البسيط */
         .footer {
             text-align: center;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            margin-top: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform-style: preserve-3d;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                var(--primary), 
-                var(--secondary), 
-                transparent);
-            transform: translateZ(5px);
+            padding: 20px;
+            background: #1a1a2e;
+            border-radius: 15px;
+            margin-top: 10px;
+            border: 1px solid #2d2d44;
         }
 
         .footer-logo {
-            font-size: 2.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: transparent;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            transform-style: preserve-3d;
-        }
-
-        .footer-logo span {
-            position: relative;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            transform: translateZ(10px);
-        }
-
-        .footer-logo::before {
-            content: 'TOP VOICE';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            background: linear-gradient(45deg, var(--accent), var(--success));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            opacity: 0.3;
-            transform: translateZ(-5px);
-            filter: blur(2px);
-        }
-
-        .footer-text {
-            color: #aaa;
-            font-size: 1.1rem;
+            color: #667eea;
             margin-bottom: 10px;
-            transform: translateZ(5px);
         }
 
         .copyright {
+            font-size: 0.8rem;
             color: #666;
-            font-size: 0.9rem;
-            margin-top: 20px;
-            transform: translateZ(3px);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .teams-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
+        /* للكمبيوتر - يظهر 3 في الصف */
+        @media (min-width: 768px) {
+            .members-list {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
             }
             
-            .logo-3d {
-                font-size: 3rem;
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .header {
+                margin-bottom: 30px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
             }
             
             .title {
-                font-size: 2rem;
-            }
-            
-            .team-type {
                 font-size: 1.5rem;
             }
-            
-            .phone-number {
-                font-size: 1.5rem;
+        }
+
+        /* للتلفون - كل شيء تحت بعض */
+        @media (max-width: 767px) {
+            .members-list {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
             }
             
-            .whatsapp-btn {
-                padding: 20px;
+            .header {
+                padding: 15px;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .title {
                 font-size: 1.2rem;
             }
             
-            .cube {
-                display: none;
+            .member-card {
+                padding: 15px;
             }
-        }
-
-        @media (min-width: 1200px) {
-            .teams-grid {
-                grid-template-columns: repeat(3, 1fr);
+            
+            .team-name {
+                font-size: 1.2rem;
             }
-        }
-
-        /* تأثيرات الظهور */
-        .team-card {
-            animation: cardAppear 0.6s ease-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: perspective(1000px) rotateY(-90deg) translateY(50px);
+            
+            .phone-number {
+                font-size: 1rem;
             }
-            to {
-                opacity: 1;
-                transform: perspective(1000px) rotateY(0deg) translateY(0);
+            
+            .whatsapp-btn {
+                padding: 14px;
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- تأثيرات 3D خلفية -->
-    <div class="floating-3d">
-        <div class="cube">
-            <div class="side front"></div>
-            <div class="side back"></div>
-            <div class="side right"></div>
-            <div class="side left"></div>
-            <div class="side top"></div>
-            <div class="side bottom"></div>
-        </div>
-        <div class="cube">
-            <div class="side front"></div>
-            <div class="side back"></div>
-            <div class="side right"></div>
-            <div class="side left"></div>
-            <div class="side top"></div>
-            <div class="side bottom"></div>
-        </div>
-        <div class="cube">
-            <div class="side front"></div>
-            <div class="side back"></div>
-            <div class="side right"></div>
-            <div class="side left"></div>
-            <div class="side top"></div>
-            <div class="side bottom"></div>
-        </div>
-    </div>
-
     <div class="container">
         <!-- الهيدر -->
-        <div class="site-header">
-            <div class="logo-3d"><span>TOP VOICE</span></div>
-            <div class="logo-subtitle">التميز في التواصل</div>
-            <h1 class="title">
-                <i class="fas fa-users"></i>
-                تواصل مباشر مع فريقنا
-            </h1>
-            <p class="description">
-                تواصل معنا عبر واتساب للحصول على أسرع خدمة ودعم فني متكامل
-            </p>
+        <div class="header">
+            <div class="logo">TOP VOICE</div>
+            <div class="title">فريق الإدارة</div>
+            <div class="subtitle">تواصل مباشر عبر واتساب</div>
         </div>
 
-        <!-- شبكة الفرق -->
-        <div class="teams-grid">
+        <!-- القائمة - كل البطاقات تحت بعض -->
+        <div class="members-list">
             <!-- خدمة العملاء -->
-            <div class="team-card customer">
+            <div class="member-card customer">
                 <div class="card-header">
-                    <div class="team-type">
-                        <i class="fas fa-headset"></i>
-                        خدمة العملاء
-                    </div>
-                    <div class="team-id">CUSTOMER CARE</div>
+                    <div class="member-id">CUSTOMER CARE</div>
+                    <div class="member-type">دعم فني</div>
                 </div>
-                <div class="card-content">
-                    <div class="phone-section">
-                        <div class="phone-label">
-                            <i class="fas fa-phone-alt"></i>
-                            رقم التواصل المباشر
-                        </div>
-                        <div class="phone-number">+56 9 6135 0756</div>
+                <div class="team-name">خدمة العملاء</div>
+                <div class="phone-section">
+                    <div class="phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        رقم التواصل:
                     </div>
-                    <a href="https://wa.me/56961350756?text=مرحبا%20أريد%20التواصل%20مع%20خدمة%20العملاء%20بشأن%20التطبيق" 
-                       class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        تواصل عبر واتساب
-                    </a>
+                    <div class="phone-number">+56 9 6135 0756</div>
                 </div>
+                <a href="https://wa.me/56961350756?text=مرحبا%20أريد%20التواصل%20مع%20خدمة%20العملاء" 
+                   class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    تواصل عبر واتساب
+                </a>
             </div>
 
-            <!-- فريق الإدارة -->
-            <div class="team-card management">
+            <!-- فريق الإدارة 200200 -->
+            <div class="member-card management">
                 <div class="card-header">
-                    <div class="team-type">
-                        <i class="fas fa-user-tie"></i>
-                        فريق الإدارة
-                    </div>
-                    <div class="team-id">ID: 200200</div>
+                    <div class="member-id">ID: 200200</div>
+                    <div class="member-type">فريق الإدارة</div>
                 </div>
-                <div class="card-content">
-                    <div class="phone-section">
-                        <div class="phone-label">
-                            <i class="fas fa-phone-alt"></i>
-                            رقم التواصل المباشر
-                        </div>
-                        <div class="phone-number">+201111772388</div>
+                <div class="team-name">فريق الإدارة</div>
+                <div class="phone-section">
+                    <div class="phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        رقم التواصل:
                     </div>
-                    <a href="https://wa.me/201111772388?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة%20بشأن%20التطبيق" 
-                       class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        تواصل عبر واتساب
-                    </a>
+                    <div class="phone-number">+201111772388</div>
                 </div>
+                <a href="https://wa.me/201111772388?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
+                   class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    تواصل عبر واتساب
+                </a>
             </div>
 
             <!-- فريق الإدارة 200909 -->
-            <div class="team-card management">
+            <div class="member-card management">
                 <div class="card-header">
-                    <div class="team-type">
-                        <i class="fas fa-user-tie"></i>
-                        فريق الإدارة
-                    </div>
-                    <div class="team-id">ID: 200909</div>
+                    <div class="member-id">ID: 200909</div>
+                    <div class="member-type">فريق الإدارة</div>
                 </div>
-                <div class="card-content">
-                    <div class="phone-section">
-                        <div class="phone-label">
-                            <i class="fas fa-phone-alt"></i>
-                            رقم التواصل المباشر
-                        </div>
-                        <div class="phone-number">01029703036</div>
+                <div class="team-name">فريق الإدارة</div>
+                <div class="phone-section">
+                    <div class="phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        رقم التواصل:
                     </div>
-                    <a href="https://wa.me/201029703036?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة%20بشأن%20التطبيق" 
-                       class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        تواصل عبر واتساب
-                    </a>
+                    <div class="phone-number">01029703036</div>
                 </div>
+                <a href="https://wa.me/201029703036?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
+                   class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    تواصل عبر واتساب
+                </a>
             </div>
 
             <!-- فريق الإدارة 200444 -->
-            <div class="team-card management">
+            <div class="member-card management">
                 <div class="card-header">
-                    <div class="team-type">
-                        <i class="fas fa-user-tie"></i>
-                        فريق الإدارة
-                    </div>
-                    <div class="team-id">ID: 200444</div>
+                    <div class="member-id">ID: 200444</div>
+                    <div class="member-type">فريق الإدارة</div>
                 </div>
-                <div class="card-content">
-                    <div class="phone-section">
-                        <div class="phone-label">
-                            <i class="fas fa-phone-alt"></i>
-                            رقم التواصل المباشر
-                        </div>
-                        <div class="phone-number">+201116140586</div>
+                <div class="team-name">فريق الإدارة</div>
+                <div class="phone-section">
+                    <div class="phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        رقم التواصل:
                     </div>
-                    <a href="https://wa.me/201116140586?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة%20بشأن%20التطبيق" 
-                       class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        تواصل عبر واتساب
-                    </a>
+                    <div class="phone-number">+201116140586</div>
                 </div>
+                <a href="https://wa.me/201116140586?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
+                   class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    تواصل عبر واتساب
+                </a>
             </div>
 
             <!-- فريق الإدارة 200111 -->
-            <div class="team-card management">
+            <div class="member-card management">
                 <div class="card-header">
-                    <div class="team-type">
-                        <i class="fas fa-user-tie"></i>
-                        فريق الإدارة
-                    </div>
-                    <div class="team-id">ID: 200111</div>
+                    <div class="member-id">ID: 200111</div>
+                    <div class="member-type">فريق الإدارة</div>
                 </div>
-                <div class="card-content">
-                    <div class="phone-section">
-                        <div class="phone-label">
-                            <i class="fas fa-phone-alt"></i>
-                            رقم التواصل المباشر
-                        </div>
-                        <div class="phone-number">01032980206</div>
+                <div class="team-name">فريق الإدارة</div>
+                <div class="phone-section">
+                    <div class="phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        رقم التواصل:
                     </div>
-                    <a href="https://wa.me/201032980206?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة%20بشأن%20التطبيق" 
-                       class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        تواصل عبر واتساب
-                    </a>
+                    <div class="phone-number">01032980206</div>
                 </div>
+                <a href="https://wa.me/201032980206?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
+                   class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    تواصل عبر واتساب
+                </a>
             </div>
 
             <!-- فريق الإدارة 200222 -->
-            <div class="team-card management">
+            <div class="member-card management">
                 <div class="card-header">
-                    <div class="team-type">
-                        <i class="fas fa-user-tie"></i>
-                        فريق الإدارة
-                    </div>
-                    <div class="team-id">ID: 200222</div>
+                    <div class="member-id">ID: 200222</div>
+                    <div class="member-type">فريق الإدارة</div>
                 </div>
-                <div class="card-content">
-                    <div class="phone-section">
-                        <div class="phone-label">
-                            <i class="fas fa-phone-alt"></i>
-                            رقم التواصل المباشر
-                        </div>
-                        <div class="phone-number">01212055596</div>
+                <div class="team-name">فريق الإدارة</div>
+                <div class="phone-section">
+                    <div class="phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        رقم التواصل:
                     </div>
-                    <a href="https://wa.me/201212055596?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة%20بشأن%20التطبيق" 
-                       class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        تواصل عبر واتساب
-                    </a>
+                    <div class="phone-number">01212055596</div>
                 </div>
+                <a href="https://wa.me/201212055596?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
+                   class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    تواصل عبر واتساب
+                </a>
             </div>
 
             <!-- الداعمين VIP -->
-            <div class="team-card vip">
+            <div class="member-card vip">
                 <div class="card-header">
-                    <div class="team-type">
-                        <i class="fas fa-crown"></i>
-                        الداعمين VIP
-                    </div>
-                    <div class="team-id">ID: 100010</div>
+                    <div class="member-id">ID: 100010</div>
+                    <div class="member-type">VIP</div>
                 </div>
-                <div class="card-content">
-                    <div class="phone-section">
-                        <div class="phone-label">
-                            <i class="fas fa-phone-alt"></i>
-                            رقم التواصل المباشر
-                        </div>
-                        <div class="phone-number">01556864346</div>
+                <div class="team-name">الداعمين VIP</div>
+                <div class="phone-section">
+                    <div class="phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        رقم التواصل:
                     </div>
-                    <a href="https://wa.me/201556864346?text=مرحبا%20أريد%20التواصل%20مع%20الداعمين%20بشأن%20التطبيق" 
-                       class="whatsapp-btn" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        تواصل عبر واتساب
-                    </a>
+                    <div class="phone-number">01556864346</div>
                 </div>
+                <a href="https://wa.me/201556864346?text=مرحبا%20أريد%20التواصل%20مع%20الداعمين" 
+                   class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    تواصل عبر واتساب
+                </a>
             </div>
         </div>
 
         <!-- الفوتر -->
-        <footer class="footer">
-            <div class="footer-logo"><span>TOP VOICE</span></div>
-            <div class="footer-text">تواصل معنا على مدار الساعة</div>
-            <div class="footer-text">فريق دعم فني متكامل</div>
-            <div class="copyright">جميع الحقوق محفوظة © 2023 Top Voice</div>
-        </footer>
+        <div class="footer">
+            <div class="footer-logo">TOP VOICE</div>
+            <div class="copyright">جميع الحقوق محفوظة © 2023</div>
+        </div>
     </div>
 
     <script>
-        // تأثيرات 3D تفاعلية
+        // جعل كل البطاقات تظهر مباشرة
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.team-card');
-            
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
-                
-                // تأثير 3D عند تحريك الماوس
-                card.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const rotateY = ((x - centerX) / centerX) * 5;
-                    const rotateX = ((centerY - y) / centerY) * 5;
-                    
-                    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'perspective(1000px) rotateY(5deg) translateY(-10px) scale(1.02)';
-                });
+            // إزالة أي تأخير في الظهور
+            const cards = document.querySelectorAll('.member-card');
+            cards.forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
             });
             
-            // تأثيرات الأزرار
-            const buttons = document.querySelectorAll('.whatsapp-btn');
-            buttons.forEach(btn => {
-                btn.addEventListener('mouseenter', function() {
-                    const icon = this.querySelector('i');
-                    icon.style.transform = 'scale(1.3) rotateY(360deg)';
-                });
-                
-                btn.addEventListener('mouseleave', function() {
-                    const icon = this.querySelector('i');
-                    icon.style.transform = 'scale(1) rotateY(0deg)';
-                });
-            });
-            
-            // تأثيرات أقسام الهاتف
-            const phoneSections = document.querySelectorAll('.phone-section');
-            phoneSections.forEach(section => {
-                section.addEventListener('mouseenter', function() {
-                    const number = this.querySelector('.phone-number');
-                    number.style.transform = 'translateZ(25px) scale(1.05)';
-                });
-                
-                section.addEventListener('mouseleave', function() {
-                    const number = this.querySelector('.phone-number');
-                    number.style.transform = 'translateZ(15px) scale(1)';
-                });
-            });
-            
-            // تأثير على الشعار
-            const logo = document.querySelector('.logo-3d');
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const rate = scrolled * -0.5;
-                logo.style.transform = `translateY(${rate}px) rotateX(${rate * 0.1}deg)`;
-            });
+            // جعل الصفحة تركز على الأعلى مباشرة
+            window.scrollTo(0, 0);
         });
     </script>
 </body>
