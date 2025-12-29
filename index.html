@@ -32,10 +32,10 @@
         /* الهيدر */
         .header {
             text-align: center;
-            padding: 20px 15px;
+            padding: 25px 15px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 20px;
+            border-radius: 0 0 25px 25px;
+            margin-bottom: 25px;
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
             position: relative;
             overflow: hidden;
@@ -52,52 +52,58 @@
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: white;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
         }
 
         .title {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
         .subtitle {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.8);
             max-width: 90%;
             margin: 0 auto;
+            line-height: 1.5;
         }
 
-        /* قسم البطاقات المدمجة (خدمة العملاء + VIP) */
-        .compact-section {
+        /* قسم البطاقات الصغيرة جنب بعض */
+        .mini-section {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 25px;
+            background: rgba(26, 26, 46, 0.5);
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .compact-card {
+        .mini-card {
             flex: 1;
             background: linear-gradient(145deg, #1a1a2e, #16213e);
-            border-radius: 15px;
-            padding: 18px 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .compact-card:hover {
+        .mini-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .compact-card::before {
+        .mini-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -106,69 +112,61 @@
             height: 3px;
         }
 
-        .customer-card::before {
+        .mini-customer::before {
             background: linear-gradient(90deg, #00ff88, #00cc6a);
         }
 
-        .vip-card::before {
+        .mini-vip::before {
             background: linear-gradient(90deg, #ff4081, #e91e63);
         }
 
-        .compact-header {
+        .mini-header {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        .compact-id {
-            font-size: 0.8rem;
+        .mini-id {
+            font-size: 0.75rem;
             font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 20px;
+            padding: 4px 10px;
+            border-radius: 15px;
             letter-spacing: 0.3px;
+            margin-bottom: 8px;
+            width: fit-content;
         }
 
-        .customer-id {
+        .mini-customer-id {
             background: rgba(0, 255, 136, 0.15);
             color: #00ff88;
             border: 1px solid rgba(0, 255, 136, 0.3);
         }
 
-        .vip-id {
+        .mini-vip-id {
             background: rgba(255, 64, 129, 0.15);
             color: #ff4081;
             border: 1px solid rgba(255, 64, 129, 0.3);
         }
 
-        .compact-type {
-            font-size: 0.75rem;
-            color: #bbb;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 4px 10px;
-            border-radius: 12px;
-        }
-
-        .compact-name {
-            font-size: 1rem;
+        .mini-name {
+            font-size: 0.9rem;
             font-weight: 700;
             color: white;
             text-align: center;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 12px;
         }
 
-        .compact-phone-section {
+        .mini-phone-section {
             background: rgba(255, 255, 255, 0.03);
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 12px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .compact-phone-label {
-            font-size: 0.75rem;
+        .mini-phone-label {
+            font-size: 0.7rem;
             color: #aaa;
             margin-bottom: 5px;
             display: flex;
@@ -177,37 +175,37 @@
             gap: 5px;
         }
 
-        .compact-phone-number {
-            font-size: 0.95rem;
+        .mini-phone-number {
+            font-size: 0.85rem;
             font-weight: 700;
             color: white;
             direction: ltr;
             text-align: center;
             font-family: 'Courier New', monospace;
-            padding: 8px;
+            padding: 6px;
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
+            border-radius: 6px;
             letter-spacing: 0.5px;
         }
 
-        .compact-whatsapp-btn {
+        .mini-whatsapp-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 10px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             transition: all 0.3s;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.15);
+            box-shadow: 0 3px 8px rgba(37, 211, 102, 0.15);
         }
 
-        .compact-whatsapp-btn:hover {
+        .mini-whatsapp-btn:hover {
             background: linear-gradient(135deg, #1da851, #0d7d5a);
             transform: translateY(-2px);
         }
@@ -640,25 +638,26 @@
             }
             
             .header {
-                padding: 18px 10px;
-                margin-bottom: 18px;
+                padding: 22px 10px;
+                margin-bottom: 20px;
             }
             
             .logo {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             
             .title {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             
-            .compact-section {
-                flex-direction: column;
-                gap: 15px;
+            .mini-section {
+                flex-direction: row;
+                gap: 8px;
+                padding: 12px;
             }
             
-            .compact-card {
-                padding: 16px 12px;
+            .mini-card {
+                padding: 12px 10px;
             }
             
             .featured-management-card {
@@ -712,6 +711,10 @@
             .featured-management-card {
                 padding: 18px 14px;
             }
+            
+            .mini-section {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -724,45 +727,43 @@
             <div class="subtitle">تواصل مباشر مع فريق الإدارة</div>
         </div>
 
-        <!-- قسم البطاقات المدمجة (خدمة العملاء + VIP) -->
-        <div class="compact-section">
+        <!-- قسم البطاقات الصغيرة (خدمة العملاء + VIP جنب بعض) -->
+        <div class="mini-section">
             <!-- خدمة العملاء -->
-            <div class="compact-card customer-card">
-                <div class="compact-header">
-                    <div class="compact-id customer-id">CUSTOMER CARE</div>
-                    <div class="compact-type">دعم فني</div>
+            <div class="mini-card mini-customer">
+                <div class="mini-header">
+                    <div class="mini-id mini-customer-id">CUSTOMER CARE</div>
+                    <div class="mini-name">خدمة العملاء</div>
                 </div>
-                <div class="compact-name">خدمة العملاء</div>
-                <div class="compact-phone-section">
-                    <div class="compact-phone-label">
+                <div class="mini-phone-section">
+                    <div class="mini-phone-label">
                         <i class="fas fa-headset"></i>
                         رقم التواصل
                     </div>
-                    <div class="compact-phone-number">+56 9 6135 0756</div>
+                    <div class="mini-phone-number">+56 9 6135 0756</div>
                 </div>
                 <a href="https://wa.me/56961350756?text=مرحبا%20أريد%20التواصل%20مع%20خدمة%20العملاء" 
-                   class="compact-whatsapp-btn" target="_blank">
+                   class="mini-whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                     واتساب
                 </a>
             </div>
 
             <!-- الداعمين VIP -->
-            <div class="compact-card vip-card">
-                <div class="compact-header">
-                    <div class="compact-id vip-id">ID: 100010</div>
-                    <div class="compact-type">VIP</div>
+            <div class="mini-card mini-vip">
+                <div class="mini-header">
+                    <div class="mini-id mini-vip-id">ID: 100010</div>
+                    <div class="mini-name">الداعمين VIP</div>
                 </div>
-                <div class="compact-name">الداعمين VIP</div>
-                <div class="compact-phone-section">
-                    <div class="compact-phone-label">
+                <div class="mini-phone-section">
+                    <div class="mini-phone-label">
                         <i class="fas fa-crown"></i>
                         رقم التواصل
                     </div>
-                    <div class="compact-phone-number">01556864346</div>
+                    <div class="mini-phone-number">01556864346</div>
                 </div>
                 <a href="https://wa.me/201556864346?text=مرحبا%20أريد%20التواصل%20مع%20الداعمين" 
-                   class="compact-whatsapp-btn" target="_blank">
+                   class="mini-whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                     واتساب
                 </a>
@@ -778,7 +779,7 @@
         <div class="featured-management-card">
             <div class="featured-management-header">
                 <div class="featured-management-id">ID: 200909</div>
-                <div class="featured-management-type">مدير رئيسي</div>
+                <div class="featured-management-type">فريق ادارة</div>
             </div>
             <div class="featured-management-name">فريق الإدارة</div>
             <div class="featured-management-phone-section">
@@ -897,7 +898,7 @@
             window.scrollTo(0, 0);
             
             // تأثير ظهور متتالي للبطاقات
-            const cards = document.querySelectorAll('.compact-card, .featured-management-card, .management-card');
+            const cards = document.querySelectorAll('.mini-card, .featured-management-card, .management-card');
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.opacity = '1';
@@ -927,13 +928,13 @@
         // إضافة أنيميشن
         const style = document.createElement('style');
         style.textContent = `
-            .compact-card, .featured-management-card, .management-card {
+            .mini-card, .featured-management-card, .management-card {
                 opacity: 0;
                 transform: translateY(20px);
                 transition: opacity 0.5s ease, transform 0.5s ease;
             }
             
-            .compact-card {
+            .mini-card {
                 transition-delay: 0.1s;
             }
             
