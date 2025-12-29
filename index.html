@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Top Voice - فريق الإدارة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -11,255 +11,706 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: #0a0a0f;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
             color: white;
             min-height: 100vh;
             padding: 0;
+            overflow-x: hidden;
         }
 
         .container {
             width: 100%;
             max-width: 100%;
             padding: 15px;
+            padding-bottom: 80px;
         }
 
-        /* الهيدر البسيط */
+        /* الهيدر */
         .header {
             text-align: center;
             padding: 20px 15px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 0 0 20px 20px;
             margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff88, #667eea, #ff4081);
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: 900;
             color: white;
             margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .title {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 5px;
+            font-weight: 600;
         }
 
         .subtitle {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 90%;
+            margin: 0 auto;
         }
 
-        /* قائمة البطاقات */
-        .members-list {
-            width: 100%;
+        /* قسم البطاقات المدمجة (خدمة العملاء + VIP) */
+        .compact-section {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
-        /* بطاقة واحدة */
-        .member-card {
-            background: #1a1a2e;
+        .compact-card {
+            flex: 1;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
             border-radius: 15px;
-            padding: 20px;
+            padding: 18px 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid #2d2d44;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        /* أعلى البطاقة */
-        .card-header {
+        .compact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .compact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .customer-card::before {
+            background: linear-gradient(90deg, #00ff88, #00cc6a);
+        }
+
+        .vip-card::before {
+            background: linear-gradient(90deg, #ff4081, #e91e63);
+        }
+
+        .compact-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .compact-id {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .customer-id {
+            background: rgba(0, 255, 136, 0.15);
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .vip-id {
+            background: rgba(255, 64, 129, 0.15);
+            color: #ff4081;
+            border: 1px solid rgba(255, 64, 129, 0.3);
+        }
+
+        .compact-type {
+            font-size: 0.75rem;
+            color: #bbb;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .compact-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .compact-phone-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .compact-phone-label {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .compact-phone-number {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: white;
+            direction: ltr;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .compact-whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.15);
+        }
+
+        .compact-whatsapp-btn:hover {
+            background: linear-gradient(135deg, #1da851, #0d7d5a);
+            transform: translateY(-2px);
+        }
+
+        /* قسم فريق الإدارة */
+        .management-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .management-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: translateX(-100%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            100% { transform: translateX(100%); }
+        }
+
+        /* بطاقة فريق الإدارة الأولى المميزة */
+        .featured-management-card {
+            background: linear-gradient(145deg, #22223a, #1a1a32);
+            border-radius: 18px;
+            padding: 22px 18px;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.15),
+                        0 5px 15px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .featured-management-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .featured-management-card::after {
+            content: '⭐';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+
+        .featured-management-card:hover {
+            transform: translateY(-5px) rotateX(2deg);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2),
+                        0 8px 20px rgba(0, 0, 0, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .featured-management-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
         }
 
-        .member-id {
+        .featured-management-id {
             font-size: 0.9rem;
-            font-weight: 700;
-            padding: 6px 15px;
-            border-radius: 20px;
+            font-weight: 800;
+            padding: 7px 15px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+            color: #FFD700;
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .member-type {
+        .featured-management-id::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            transform: rotate(30deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        .featured-management-type {
             font-size: 0.8rem;
-            color: #aaa;
+            color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 5px 12px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            font-weight: 600;
         }
 
-        /* اسم الفريق */
-        .team-name {
-            font-size: 1.3rem;
-            font-weight: 700;
+        .featured-management-name {
+            font-size: 1.1rem;
+            font-weight: 800;
             color: white;
-            margin-bottom: 10px;
             text-align: center;
-        }
-
-        /* الرقم */
-        .phone-section {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 12px;
-            border-radius: 10px;
             margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .phone-label {
-            font-size: 0.8rem;
-            color: #aaa;
-            margin-bottom: 5px;
+        .featured-management-phone-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 165, 0, 0.05));
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-management-phone-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+        }
+
+        .featured-management-phone-label {
+            font-size: 0.85rem;
+            color: #FFD700;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
         }
 
-        .phone-number {
+        .featured-management-phone-number {
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 900;
             color: white;
             direction: ltr;
             text-align: center;
-            font-family: monospace;
-            padding: 8px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-        /* زر واتساب كبير وواضح */
-        .whatsapp-btn {
+        .featured-management-whatsapp-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: #25D366;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             text-decoration: none;
             padding: 16px;
             border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: all 0.3s;
             width: 100%;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.25);
+            position: relative;
+            overflow: hidden;
+            border: none;
         }
 
-        .whatsapp-btn:hover {
-            background: #128C7E;
-            transform: scale(1.02);
+        .featured-management-whatsapp-btn:hover {
+            background: linear-gradient(135deg, #1da851, #0d7d5a);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.35);
         }
 
-        .whatsapp-btn i {
-            font-size: 1.2rem;
+        .featured-management-whatsapp-btn:active {
+            transform: translateY(-1px) scale(0.98);
         }
 
-        /* الألوان */
-        .customer .member-id {
-            background: rgba(0, 255, 136, 0.2);
-            color: #00ff88;
-            border: 1px solid rgba(0, 255, 136, 0.3);
+        .featured-management-whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 30%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0) 70%
+            );
+            transform: rotate(30deg);
+            animation: shimmer 3s infinite;
         }
 
-        .management .member-id {
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
+        /* شبكة فريق الإدارة العادية */
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .management-card {
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            border-radius: 15px;
+            padding: 18px 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .management-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .management-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .management-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .management-id {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            background: rgba(102, 126, 234, 0.15);
+            color: #8a9eff;
             border: 1px solid rgba(102, 126, 234, 0.3);
+            letter-spacing: 0.3px;
         }
 
-        .vip .member-id {
-            background: rgba(255, 64, 129, 0.2);
-            color: #ff4081;
-            border: 1px solid rgba(255, 64, 129, 0.3);
+        .management-type {
+            font-size: 0.75rem;
+            color: #bbb;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 12px;
         }
 
-        /* الفوتر البسيط */
+        .management-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .management-phone-section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .management-phone-label {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .management-phone-number {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: white;
+            direction: ltr;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            padding: 7px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .management-whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.15);
+        }
+
+        .management-whatsapp-btn:hover {
+            background: linear-gradient(135deg, #1da851, #0d7d5a);
+            transform: translateY(-2px);
+        }
+
+        /* الفوتر */
         .footer {
             text-align: center;
             padding: 20px;
-            background: #1a1a2e;
+            background: rgba(26, 26, 46, 0.9);
             border-radius: 15px;
             margin-top: 10px;
-            border: 1px solid #2d2d44;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
         }
 
         .footer-logo {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 800;
             color: #667eea;
             margin-bottom: 10px;
         }
 
         .copyright {
             font-size: 0.8rem;
-            color: #666;
+            color: #888;
+            line-height: 1.5;
         }
 
-        /* للكمبيوتر - يظهر 3 في الصف */
-        @media (min-width: 768px) {
-            .members-list {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-            
+        /* زر العودة للأعلى */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* تحسينات للهواتف الصغيرة */
+        @media (max-width: 767px) {
             .container {
-                max-width: 1200px;
-                margin: 0 auto;
+                padding-left: 10px;
+                padding-right: 10px;
             }
             
             .header {
-                margin-bottom: 30px;
+                padding: 18px 10px;
+                margin-bottom: 18px;
             }
             
             .logo {
-                font-size: 2.5rem;
+                font-size: 1.6rem;
             }
             
             .title {
-                font-size: 1.5rem;
+                font-size: 1.1rem;
             }
-        }
-
-        /* للتلفون - كل شيء تحت بعض */
-        @media (max-width: 767px) {
-            .members-list {
-                display: flex;
+            
+            .compact-section {
                 flex-direction: column;
                 gap: 15px;
             }
             
-            .header {
-                padding: 15px;
+            .compact-card {
+                padding: 16px 12px;
             }
             
+            .featured-management-card {
+                padding: 20px 16px;
+                margin-bottom: 18px;
+            }
+            
+            .management-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .management-card {
+                padding: 16px 12px;
+            }
+        }
+
+        /* للهواتف الأفقية */
+        @media (min-width: 500px) and (max-width: 767px) {
+            .management-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* إخفاء تصميم الكمبيوتر */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 450px;
+                margin: 0 auto;
+            }
+        }
+
+        /* للهواتف الصغيرة جداً */
+        @media (max-width: 350px) {
             .logo {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
             }
             
             .title {
-                font-size: 1.2rem;
-            }
-            
-            .member-card {
-                padding: 15px;
-            }
-            
-            .team-name {
-                font-size: 1.2rem;
-            }
-            
-            .phone-number {
                 font-size: 1rem;
             }
             
-            .whatsapp-btn {
-                padding: 14px;
-                font-size: 0.95rem;
+            .management-title {
+                font-size: 1.1rem;
+            }
+            
+            .management-grid {
+                gap: 12px;
+            }
+            
+            .featured-management-card {
+                padding: 18px 14px;
             }
         }
     </style>
@@ -270,155 +721,142 @@
         <div class="header">
             <div class="logo">TOP VOICE</div>
             <div class="title">فريق الإدارة</div>
-            <div class="subtitle">تواصل مباشر عبر واتساب</div>
+            <div class="subtitle">تواصل مباشر مع فريق الإدارة</div>
         </div>
 
-        <!-- القائمة - كل البطاقات تحت بعض -->
-        <div class="members-list">
+        <!-- قسم البطاقات المدمجة (خدمة العملاء + VIP) -->
+        <div class="compact-section">
             <!-- خدمة العملاء -->
-            <div class="member-card customer">
-                <div class="card-header">
-                    <div class="member-id">CUSTOMER CARE</div>
-                    <div class="member-type">دعم فني</div>
+            <div class="compact-card customer-card">
+                <div class="compact-header">
+                    <div class="compact-id customer-id">CUSTOMER CARE</div>
+                    <div class="compact-type">دعم فني</div>
                 </div>
-                <div class="team-name">خدمة العملاء</div>
-                <div class="phone-section">
-                    <div class="phone-label">
-                        <i class="fas fa-phone-alt"></i>
-                        رقم التواصل:
+                <div class="compact-name">خدمة العملاء</div>
+                <div class="compact-phone-section">
+                    <div class="compact-phone-label">
+                        <i class="fas fa-headset"></i>
+                        رقم التواصل
                     </div>
-                    <div class="phone-number">+56 9 6135 0756</div>
+                    <div class="compact-phone-number">+56 9 6135 0756</div>
                 </div>
                 <a href="https://wa.me/56961350756?text=مرحبا%20أريد%20التواصل%20مع%20خدمة%20العملاء" 
-                   class="whatsapp-btn" target="_blank">
+                   class="compact-whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    تواصل عبر واتساب
-                </a>
-            </div>
-
-            <!-- فريق الإدارة 200200 -->
-            <div class="member-card management">
-                <div class="card-header">
-                    <div class="member-id">ID: 200200</div>
-                    <div class="member-type">فريق الإدارة</div>
-                </div>
-                <div class="team-name">فريق الإدارة</div>
-                <div class="phone-section">
-                    <div class="phone-label">
-                        <i class="fas fa-phone-alt"></i>
-                        رقم التواصل:
-                    </div>
-                    <div class="phone-number">+201111772388</div>
-                </div>
-                <a href="https://wa.me/201111772388?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
-                   class="whatsapp-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    تواصل عبر واتساب
-                </a>
-            </div>
-
-            <!-- فريق الإدارة 200909 -->
-            <div class="member-card management">
-                <div class="card-header">
-                    <div class="member-id">ID: 200909</div>
-                    <div class="member-type">فريق الإدارة</div>
-                </div>
-                <div class="team-name">فريق الإدارة</div>
-                <div class="phone-section">
-                    <div class="phone-label">
-                        <i class="fas fa-phone-alt"></i>
-                        رقم التواصل:
-                    </div>
-                    <div class="phone-number">01029703036</div>
-                </div>
-                <a href="https://wa.me/201029703036?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
-                   class="whatsapp-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    تواصل عبر واتساب
-                </a>
-            </div>
-
-            <!-- فريق الإدارة 200444 -->
-            <div class="member-card management">
-                <div class="card-header">
-                    <div class="member-id">ID: 200444</div>
-                    <div class="member-type">فريق الإدارة</div>
-                </div>
-                <div class="team-name">فريق الإدارة</div>
-                <div class="phone-section">
-                    <div class="phone-label">
-                        <i class="fas fa-phone-alt"></i>
-                        رقم التواصل:
-                    </div>
-                    <div class="phone-number">+201116140586</div>
-                </div>
-                <a href="https://wa.me/201116140586?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
-                   class="whatsapp-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    تواصل عبر واتساب
-                </a>
-            </div>
-
-            <!-- فريق الإدارة 200111 -->
-            <div class="member-card management">
-                <div class="card-header">
-                    <div class="member-id">ID: 200111</div>
-                    <div class="member-type">فريق الإدارة</div>
-                </div>
-                <div class="team-name">فريق الإدارة</div>
-                <div class="phone-section">
-                    <div class="phone-label">
-                        <i class="fas fa-phone-alt"></i>
-                        رقم التواصل:
-                    </div>
-                    <div class="phone-number">01032980206</div>
-                </div>
-                <a href="https://wa.me/201032980206?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
-                   class="whatsapp-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    تواصل عبر واتساب
-                </a>
-            </div>
-
-            <!-- فريق الإدارة 200222 -->
-            <div class="member-card management">
-                <div class="card-header">
-                    <div class="member-id">ID: 200222</div>
-                    <div class="member-type">فريق الإدارة</div>
-                </div>
-                <div class="team-name">فريق الإدارة</div>
-                <div class="phone-section">
-                    <div class="phone-label">
-                        <i class="fas fa-phone-alt"></i>
-                        رقم التواصل:
-                    </div>
-                    <div class="phone-number">01212055596</div>
-                </div>
-                <a href="https://wa.me/201212055596?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
-                   class="whatsapp-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    تواصل عبر واتساب
+                    واتساب
                 </a>
             </div>
 
             <!-- الداعمين VIP -->
-            <div class="member-card vip">
-                <div class="card-header">
-                    <div class="member-id">ID: 100010</div>
-                    <div class="member-type">VIP</div>
+            <div class="compact-card vip-card">
+                <div class="compact-header">
+                    <div class="compact-id vip-id">ID: 100010</div>
+                    <div class="compact-type">VIP</div>
                 </div>
-                <div class="team-name">الداعمين VIP</div>
-                <div class="phone-section">
-                    <div class="phone-label">
-                        <i class="fas fa-phone-alt"></i>
-                        رقم التواصل:
+                <div class="compact-name">الداعمين VIP</div>
+                <div class="compact-phone-section">
+                    <div class="compact-phone-label">
+                        <i class="fas fa-crown"></i>
+                        رقم التواصل
                     </div>
-                    <div class="phone-number">01556864346</div>
+                    <div class="compact-phone-number">01556864346</div>
                 </div>
                 <a href="https://wa.me/201556864346?text=مرحبا%20أريد%20التواصل%20مع%20الداعمين" 
-                   class="whatsapp-btn" target="_blank">
+                   class="compact-whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    تواصل عبر واتساب
+                    واتساب
+                </a>
+            </div>
+        </div>
+
+        <!-- قسم فريق الإدارة -->
+        <div class="management-title">
+            <i class="fas fa-user-tie"></i> فريق الإدارة
+        </div>
+
+        <!-- البطاقة المميزة (أول رقم في فريق الإدارة) -->
+        <div class="featured-management-card">
+            <div class="featured-management-header">
+                <div class="featured-management-id">ID: 200909</div>
+                <div class="featured-management-type">مدير رئيسي</div>
+            </div>
+            <div class="featured-management-name">فريق الإدارة</div>
+            <div class="featured-management-phone-section">
+                <div class="featured-management-phone-label">
+                    <i class="fas fa-phone-alt"></i>
+                    رقم التواصل المميز
+                </div>
+                <div class="featured-management-phone-number">01029703036</div>
+            </div>
+            <a href="https://wa.me/201029703036?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
+               class="featured-management-whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                تواصل عبر واتساب
+            </a>
+        </div>
+
+        <!-- شبكة فريق الإدارة العادية -->
+        <div class="management-grid">
+            <!-- فريق الإدارة 200111 -->
+            <div class="management-card">
+                <div class="management-header">
+                    <div class="management-id">ID: 200111</div>
+                    <div class="management-type">إدارة</div>
+                </div>
+                <div class="management-name">فريق الإدارة</div>
+                <div class="management-phone-section">
+                    <div class="management-phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        تواصل
+                    </div>
+                    <div class="management-phone-number">01032980206</div>
+                </div>
+                <a href="https://wa.me/201032980206?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
+                   class="management-whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    واتساب
+                </a>
+            </div>
+
+            <!-- فريق الإدارة 200200 -->
+            <div class="management-card">
+                <div class="management-header">
+                    <div class="management-id">ID: 200200</div>
+                    <div class="management-type">إدارة</div>
+                </div>
+                <div class="management-name">فريق الإدارة</div>
+                <div class="management-phone-section">
+                    <div class="management-phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        تواصل
+                    </div>
+                    <div class="management-phone-number">01111772388</div>
+                </div>
+                <a href="https://wa.me/201111772388?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
+                   class="management-whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    واتساب
+                </a>
+            </div>
+
+            <!-- فريق الإدارة 200444 -->
+            <div class="management-card">
+                <div class="management-header">
+                    <div class="management-id">ID: 200444</div>
+                    <div class="management-type">إدارة</div>
+                </div>
+                <div class="management-name">فريق الإدارة</div>
+                <div class="management-phone-section">
+                    <div class="management-phone-label">
+                        <i class="fas fa-phone-alt"></i>
+                        تواصل
+                    </div>
+                    <div class="management-phone-number">01116140586</div>
+                </div>
+                <a href="https://wa.me/201116140586?text=مرحبا%20أريد%20التواصل%20مع%20فريق%20الإدارة" 
+                   class="management-whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    واتساب
                 </a>
             </div>
         </div>
@@ -426,23 +864,93 @@
         <!-- الفوتر -->
         <div class="footer">
             <div class="footer-logo">TOP VOICE</div>
-            <div class="copyright">جميع الحقوق محفوظة © 2023</div>
+            <div class="copyright">صفحة خاصة بفريق الإدارة فقط<br>جميع الحقوق محفوظة © 2023</div>
         </div>
     </div>
 
+    <!-- زر العودة للأعلى -->
+    <button class="scroll-top" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
-        // جعل كل البطاقات تظهر مباشرة
+        // زر العودة للأعلى
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // إضافة تأثيرات عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', function() {
-            // إزالة أي تأخير في الظهور
-            const cards = document.querySelectorAll('.member-card');
-            cards.forEach(card => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
+            window.scrollTo(0, 0);
+            
+            // تأثير ظهور متتالي للبطاقات
+            const cards = document.querySelectorAll('.compact-card, .featured-management-card, .management-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
             });
             
-            // جعل الصفحة تركز على الأعلى مباشرة
-            window.scrollTo(0, 0);
+            // تأثير خاص للبطاقة المميزة
+            const featuredCard = document.querySelector('.featured-management-card');
+            setTimeout(() => {
+                featuredCard.style.transform = 'translateY(0) rotateX(0)';
+                featuredCard.style.boxShadow = '0 10px 25px rgba(255, 215, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)';
+            }, 300);
+            
+            // تأثيرات النقر على الأزرار
+            const buttons = document.querySelectorAll('a');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
         });
+        
+        // إضافة أنيميشن
+        const style = document.createElement('style');
+        style.textContent = `
+            .compact-card, .featured-management-card, .management-card {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+            
+            .compact-card {
+                transition-delay: 0.1s;
+            }
+            
+            .featured-management-card {
+                transition-delay: 0.2s;
+                transform: translateY(30px) rotateX(5deg);
+            }
+            
+            .management-card:nth-child(odd) {
+                transition-delay: 0.3s;
+            }
+            
+            .management-card:nth-child(even) {
+                transition-delay: 0.4s;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
